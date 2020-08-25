@@ -4,31 +4,37 @@ import java.awt.*;
 
 public interface IMovieFactory {
 
-    HollyWoodMovie getHollyWoodMovie();
-    BollyWoodMovie getBollyWoodMovie();
+    HollyWoodMovie getHollyWoodMovie(String type);
+    BollyWoodMovie getBollyWoodMovie(String type);
 
 }
 
-class ActionMovieFactory implements IMovieFactory {
+class HollyWoodMovieFactory implements IMovieFactory {
     @Override
-    public HollyWoodMovie getHollyWoodMovie() {
-        return new HollyWoodAction();
+    public HollyWoodMovie getHollyWoodMovie(String type) {
+        if(type == null) return null;
+        else if (type.equalsIgnoreCase("COMEDY")) return new HollyWoodComedy();
+        else if (type.equalsIgnoreCase("ACTION")) return new HollyWoodAction();
+        return null;
     }
 
     @Override
-    public BollyWoodMovie getBollyWoodMovie() {
-        return new BollyWoodAction();
+    public BollyWoodMovie getBollyWoodMovie(String type) {
+        return null;
     }
 }
 
-class ComedyMovieFactory implements IMovieFactory {
+class BollyWoodMovieFactory implements IMovieFactory {
     @Override
-    public HollyWoodMovie getHollyWoodMovie() {
-        return new HollyWoodComedy();
+    public HollyWoodMovie getHollyWoodMovie(String type) {
+        return null;
     }
 
     @Override
-    public BollyWoodMovie getBollyWoodMovie() {
-        return new BollyWoodComedy();
+    public BollyWoodMovie getBollyWoodMovie(String type) {
+        if(type == null) return null;
+        else if (type.equalsIgnoreCase("COMEDY")) return new BollyWoodComedy();
+        else if (type.equalsIgnoreCase("ACTION")) return new BollyWoodAction();
+        return null;
     }
 }
