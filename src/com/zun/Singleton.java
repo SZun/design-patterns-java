@@ -2,13 +2,15 @@ package com.zun;
 
 public class Singleton {
 
-    private static Singleton uniqueInstance = null;
+    private volatile static Singleton uniqueInstance = null;
     private int data = 0;
 
     private Singleton(){}
 
-    public static synchronized Singleton getInstance(){
-        if(uniqueInstance == null) uniqueInstance = new Singleton();
+    public static Singleton getInstance(){
+        if(uniqueInstance == null) synchronized (Singleton.class) {
+            if(uniqueInstance == null) uniqueInstance = new Singleton();
+        }
         return uniqueInstance;
     }
 
