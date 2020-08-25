@@ -3,15 +3,13 @@ package com.zun;
 public class Client {
 
     public static void main(String[] args) {
-
-        Shape shape1 = ShapeFactory.getShape("CIRCLE");
-        shape1.draw();
-
-        Shape shape2 = ShapeFactory.getShape("RECTANGLE");
-        shape2.draw();
-
-        Shape shape3 = ShapeFactory.getShape("SQUARE");
-        shape3.draw();
+        AnimalFactory animalFactory = new AnimalFactory();
+        Animal animal = animalFactory.getAnimal("Tiger");
+        animal.eat();
+        animal = animalFactory.getAnimal("Duck");
+        animal.eat();
+        animal = animalFactory.getAnimal("Dog");
+        animal.eat();
 
     }
 
