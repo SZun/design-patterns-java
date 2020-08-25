@@ -4,17 +4,15 @@ public class Client {
 
     public static void main(String[] args) {
 
-        AbstractFactory factory = FactoryProducer.getFactory("SHAPE");
+        IMovieFactory factory = FactoryProducer.getFactory("COMEDY");
 
-        factory.getShape("CIRCLE").draw();
-        factory.getShape("SQUARE").draw();
-        factory.getShape("RECTANGLE").draw();
+        System.out.println(factory.getHollyWoodMovie().getName());
+        System.out.println(factory.getBollyWoodMovie().getName());
 
-        factory = FactoryProducer.getFactory("COLOR");
+        factory = FactoryProducer.getFactory("ACTION");
 
-        factory.getColor("RED").fill();
-        factory.getColor("GREEN").fill();
-        factory.getColor("BLUE").fill();
+        System.out.println(factory.getHollyWoodMovie().getName());
+        System.out.println(factory.getBollyWoodMovie().getName());
 
     }
 
