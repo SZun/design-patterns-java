@@ -5,16 +5,16 @@ public class Main {
     public static void main(String[] args) {
         Director director = new Director();
 
-        IBuilder carBuilder = new Car();
-        IBuilder motorcycleBuilder = new Motorcycle();
+        MealBuilder vegMealBuilder = new VegMeal();
+        MealBuilder nonVegMeal = new NonVegMeal();
 
-        director.construct(carBuilder);
-        Product p1 = carBuilder.getVehicle();
-        p1.show();
+        director.construct(vegMealBuilder);
+        Meal meal = vegMealBuilder.getMeal();
+        meal.show();
+        System.out.println("Total Price:" + meal.getCost());
 
-        director.construct(motorcycleBuilder);
-        p1 = motorcycleBuilder.getVehicle();
-        p1.show();
-
+        nonVegMeal.getMeal();
+        meal.show();
+        System.out.println("Total Price:" + meal.getCost());
     }
 }

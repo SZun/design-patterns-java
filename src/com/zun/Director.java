@@ -2,13 +2,11 @@ package com.zun;
 
 public class Director {
 
-    IBuilder myBuilder;
+   private MealBuilder mealBuilder;
 
-    public void construct(IBuilder builder){
-        myBuilder = builder;
-        myBuilder.buildBody();
-        myBuilder.insertWheels();
-        myBuilder.addHeadlight();
+    public void construct(MealBuilder builder) {
+        mealBuilder = builder;
+        mealBuilder.buildBurger();
+        mealBuilder.buildDrink();
     }
-
 }
