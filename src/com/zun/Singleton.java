@@ -2,16 +2,19 @@ package com.zun;
 
 public class Singleton {
 
-    private volatile static Singleton uniqueInstance = new Singleton();
     private int data = 0;
 
     private Singleton(){}
 
-    public static Singleton getInstance(){
-        return uniqueInstance;
+    private static class SingletonHelper {
+        private static final Singleton uniqueInstance = new Singleton();
     }
 
-    public void setDate(int data){
+    public static Singleton getInstance(){
+        return SingletonHelper.uniqueInstance;
+    }
+
+    public void setData(int data){
         this.data = data;
     }
 
