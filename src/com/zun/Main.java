@@ -5,21 +5,17 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) {
-        int c;
 
-        byte[] bytes = "Jason Fedin aBBBBccccDDDD".getBytes();
+        Circle circle = new Circle();
 
-        try {
-            InputStream in = new LowerCaseInputStream(new BufferedInputStream(new ByteArrayInputStream(bytes)));
+        Shape redCircle = new RedShapeDecorator(new Circle());
+        Shape redRectangle = new RedShapeDecorator(new Rectangle());
 
-            while((c = in.read()) >= 0){
-                System.out.print((char) c);
-            }
-
-            in.close();
-        } catch (IOException ex){
-            ex.printStackTrace();
-        }
+        circle.draw();
+        System.out.println();
+        redCircle.draw();
+        System.out.println();
+        redRectangle.draw();
     }
 
 }
