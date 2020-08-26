@@ -3,6 +3,20 @@ package com.zun;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	    FileSystemReceiver fs = FileSystemReceiverUtil.getUnderlyingFileSystem();
+
+	    OpenFileCommand openFileCommand = new OpenFileCommand(fs);
+
+	    FileInvoker fileInvoker = new FileInvoker(openFileCommand);
+
+        fileInvoker.execute();
+
+        WriteFileCommand writeFileCommand = new WriteFileCommand(fs);
+        fileInvoker = new FileInvoker(writeFileCommand);
+        fileInvoker.execute();
+
+        CloseFileCommand closeFileCommand = new CloseFileCommand(fs);
+        fileInvoker = new FileInvoker(closeFileCommand);
+        fileInvoker.execute();
     }
 }
