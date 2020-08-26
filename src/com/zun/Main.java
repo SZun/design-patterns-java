@@ -1,28 +1,30 @@
 package com.zun;
 
+import java.util.Random;
+
 public class Main {
 
     public static void main(String[] args) {
 
         RobotFactory robotFactory = new RobotFactory();
+        IRobot shape = null;
 
-        Robot shape = robotFactory.getRobot("small");
-        shape.print();
-
-        for(int i = 0; i < 2; i++){
-            shape = robotFactory.getRobot("small");
+        for(int i = 0; i < 3; i++){
+            shape = robotFactory.getRobot("King");
+            shape.setColor(getRandomColor());
             shape.print();
         }
 
-        int numTotalObjsCreated = robotFactory.totalObjects();
-        System.out.println("Total robots created = " + numTotalObjsCreated);
-
-        for(int i = 0; i < 2; i++){
-            shape = robotFactory.getRobot("large");
+        for(int i = 0; i < 3; i++){
+            shape = robotFactory.getRobot("Queen");
+            shape.setColor(getRandomColor());
             shape.print();
         }
 
-        numTotalObjsCreated = robotFactory.totalObjects();
-        System.out.println("Total robots created = " + numTotalObjsCreated);
+        System.out.println("Total robot objs: " + robotFactory.totalObjects());
+    }
+
+    private static String getRandomColor(){
+        return new Random().nextInt(20) % 2 == 0 ? "red" : "green";
     }
 }

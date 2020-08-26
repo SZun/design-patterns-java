@@ -5,25 +5,27 @@ import java.util.Map;
 
 public class RobotFactory {
 
-    private Map<String, Robot> shapes = new HashMap<>();
+    private Map<String, IRobot> shapes = new HashMap<>();
 
     public int totalObjects() {
         return shapes.size();
     }
 
-    public Robot getRobot(String robotType) {
-        Robot toReturn = null;
+    public IRobot getRobot(String robotType) {
+        IRobot toReturn = null;
 
         if (shapes.containsKey(robotType)) toReturn = shapes.get(robotType);
         else {
             switch (robotType){
-                case "small":
-                    toReturn = new SmallRobot();
-                    shapes.put("small", toReturn);
+                case "King":
+                    System.out.println("We don't have a King robot, so we'll create one");
+                    toReturn = new Robot("King");
+                    shapes.put("King", toReturn);
                     break;
-                case "large":
-                    toReturn = new LargeRobot();
-                    shapes.put("large", toReturn);
+                case "Queen":
+                    System.out.println("We don't have a Queen robot, so we'll create one");
+                    toReturn = new Robot("Queen");
+                    shapes.put("Queen", toReturn);
                     break;
                 default:
                     break;
