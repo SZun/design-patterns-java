@@ -3,11 +3,14 @@ package com.zun;
 public class Main {
 
     public static void main(String[] args) {
-        Image image = new ProxyImage("someFileName.jpg");
+        Internet internet = new ProxyInternet();
 
-        image.display();
-        System.out.println();
-
-        image.display();
+        try {
+            internet.connectTo("jasonfiend.org");
+            internet.connectTo("whatever.com");
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 }
