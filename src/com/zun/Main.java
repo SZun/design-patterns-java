@@ -1,40 +1,28 @@
 package com.zun;
 
+import java.util.Currency;
 import java.util.Scanner;
 
 public class Main {
-    private DispenseChain c1;
 
-    public Main() {
-        // initialize the chain
-        this.c1 = new Dollar50Dispensor();
-        DispenseChain c2 = new Dollar20Dispenser();
-        DispenseChain c3 = new Dollar10Dispenser();
+    public static void main(String[] args) {
 
-        // set the chain of responsibility
-        c1.setNextChain(c2);
-        c2.setNextChain(c3);
-    }
+        IReceiver  emailHandler = new EmailErrorHandler();
+        IReceiver  faxHandler = new FaxErrorHandler();
 
-    public static void main(String[] args)
-    {
-        Main atmDispensor = new Main();
+        faxHandler.setNextChain(emailHandler);
 
-        while(true)
-        {
-            int amount = 0;
+        IssueRaiser issueRaiser = new IssueRaiser(faxHandler);
 
-            System.out.println("Enter amount to dispense");
-            Scanner input = new Scanner(System.in);
-            amount = input.nextInt();
+        Message message1 = new Message("Fax late", MessagePriority.NORMAL);
+        Message message2 = new Message("Email no work", MessagePriority.HIGH);
+        Message message3 = new Message("In Email field not there", MessagePriority.NORMAL);
+        Message message4 = new Message("Fax not reaching destination", MessagePriority.HIGH);
 
-            if (amount % 10 != 0) {
-                System.out.println("Amount should be in multiple of 10s.");
-                return;
-            }
+        issueRaiser.raiseMessage(message1);
+        issueRaiser.raiseMessage(message2);
+        issueRaiser.raiseMessage(message3);
+        issueRaiser.raiseMessage(message4);
 
-            // process the request
-            atmDispensor.c1.dispense(new Currency(amount));
-        }
     }
 }
