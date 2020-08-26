@@ -3,6 +3,11 @@ package com.zun;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        Image image = new ProxyImage("someFileName.jpg");
+
+        image.display();
+        System.out.println();
+
+        image.display();
     }
 }
