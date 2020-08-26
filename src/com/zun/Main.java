@@ -3,17 +3,7 @@ package com.zun;
 public class Main {
 
     public static void main(String[] args) {
-	    Mallard mallard = new Mallard();
-	    WildTurkey wildTurkey = new WildTurkey();
-	    Duck turkeyAdapter = new TurkeyAdapter(wildTurkey);
-	    wildTurkey.fly();
-	    wildTurkey.gobble();
-	    printDuck(turkeyAdapter);
-        printDuck(mallard);
-    }
-
-    static void printDuck(Duck d){
-        d.quack();
-        d.fly();
+        CalcAdapter calcAdapter = new CalcAdapter(new Triangle(20,10));
+        System.out.println("Area of triangle is " + calcAdapter.getArea(null));
     }
 }
