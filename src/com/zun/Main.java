@@ -1,21 +1,25 @@
 package com.zun;
 
+import java.io.*;
+
 public class Main {
 
     public static void main(String[] args) {
-        ConcreteComponent concreteComponent = new ConcreteComponent();
+        int c;
 
-        ConcreteDecorator1 concreteDecorator1 = new ConcreteDecorator1();
+        byte[] bytes = "Jason Fedin aBBBBccccDDDD".getBytes();
 
-        print(concreteDecorator1, concreteComponent);
+        try {
+            InputStream in = new LowerCaseInputStream(new BufferedInputStream(new ByteArrayInputStream(bytes)));
 
-        ConcreteDecorator2 concreteDecorator2 = new ConcreteDecorator2();
+            while((c = in.read()) >= 0){
+                System.out.print((char) c);
+            }
 
-        print(concreteDecorator2, concreteComponent);
+            in.close();
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
     }
 
-    private static void print(AbstractDecorator abstractDecorator, Component component){
-        abstractDecorator.setComponent(component);
-        abstractDecorator.doJob();
-    }
 }
