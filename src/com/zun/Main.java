@@ -3,7 +3,9 @@ package com.zun;
 public class Main {
 
     public static void main(String[] args) {
-        CalcAdapter calcAdapter = new CalcAdapter(new Triangle(20,10));
-        System.out.println("Area of triangle is " + calcAdapter.getArea(null));
+        ClassAdapter classAdapter = new ClassAdapter();
+        System.out.println(classAdapter.getInteger());
+        ObjectAdapter objectAdapter = new ObjectAdapter(classAdapter);
+        System.out.println(objectAdapter.getInteger());
     }
 }
