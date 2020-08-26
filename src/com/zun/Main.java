@@ -6,21 +6,17 @@ public class Main {
         Developer developer1 = new Developer(100, "Jason Fedin", "Pro Dev");
         Developer developer2 = new Developer(101, "Myra Fedin", "Jr Dev");
 
-        Directory engDirectory = new Directory();
+        Manager engDirectory = new Manager("Mike", 25000);
         engDirectory.addEmployee(developer1);
         engDirectory.addEmployee(developer2);
 
-        Employee man1 = new Manager(200, "Jennifer Fedin", "SEO Manager");
-        Employee man2 = new Manager(201, "Ian Fedin", "Myra's Manager");
+        Developer developer3 = new Developer(103, "Tom", "Dev");
 
-        Directory accDirectory = new Directory();
-        accDirectory.addEmployee(man1);
-        accDirectory.addEmployee(man2);
+        Manager genManager = new Manager("Mark", 50000);
 
-        Directory compDirectory = new Directory();
-        compDirectory.addEmployee(engDirectory);
-        compDirectory.addEmployee(accDirectory);
+        genManager.addEmployee(developer3);
+        genManager.addEmployee(engDirectory);
 
-        compDirectory.showEmployeeDetails();
+        genManager.showEmployeeDetails();
     }
 }
