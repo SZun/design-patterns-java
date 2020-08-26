@@ -3,20 +3,15 @@ package com.zun;
 public class Main {
 
     public static void main(String[] args) {
-	    FileSystemReceiver fs = FileSystemReceiverUtil.getUnderlyingFileSystem();
+        Stock google = new Stock();
 
-	    OpenFileCommand openFileCommand = new OpenFileCommand(fs);
+        BuyStock buyStock = new BuyStock(google);
+        SellStock sellStock = new SellStock(google);
 
-	    FileInvoker fileInvoker = new FileInvoker(openFileCommand);
+        Broker broker = new Broker();
+        broker.takeOrder(buyStock);
+        broker.takeOrder(sellStock);
 
-        fileInvoker.execute();
-
-        WriteFileCommand writeFileCommand = new WriteFileCommand(fs);
-        fileInvoker = new FileInvoker(writeFileCommand);
-        fileInvoker.execute();
-
-        CloseFileCommand closeFileCommand = new CloseFileCommand(fs);
-        fileInvoker = new FileInvoker(closeFileCommand);
-        fileInvoker.execute();
+        broker.placeOrders();
     }
 }
