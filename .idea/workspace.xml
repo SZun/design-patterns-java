@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="134deab3-8c3c-4d4e-a586-5644330a6b04" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/zun/IRobot.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/zun/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zun/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zun/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zun/IRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/zun/RobotFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/zun/RobotFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/zun/RobotFactory.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,26 +21,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/zun/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="432">
+              <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/zun/IRobot.java">
+        <entry file="file://$PROJECT_DIR$/src/com/zun/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+            <state relative-caret-position="522">
+              <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/zun/RobotFactory.java">
+        <entry file="file://$PROJECT_DIR$/src/com/zun/PlayerFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="25" column="61" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
+            <state relative-caret-position="450">
+              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -65,6 +64,8 @@
         <option value="$PROJECT_DIR$/src/com/zun/Robot.java" />
         <option value="$PROJECT_DIR$/src/com/zun/IRobot.java" />
         <option value="$PROJECT_DIR$/src/com/zun/RobotFactory.java" />
+        <option value="$PROJECT_DIR$/src/com/zun/Player.java" />
+        <option value="$PROJECT_DIR$/src/com/zun/PlayerFactory.java" />
         <option value="$PROJECT_DIR$/src/com/zun/Main.java" />
       </list>
     </option>
@@ -100,13 +101,6 @@
               <item name="design-patterns-java" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="zun" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="design-patterns-java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="design-patterns-java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="zun" type="462c0819:PsiDirectoryNode" />
-              <item name="IRobot.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
           </expand>
           <select />
@@ -170,7 +164,7 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.26190478" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.26190478" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32513368" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -178,7 +172,7 @@
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.31764707" />
+      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.315508" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.3989305" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -209,10 +203,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/zun/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/zun/PlayerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/zun/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="432">
+          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
         </state>
       </provider>
     </entry>
