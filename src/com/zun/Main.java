@@ -1,22 +1,52 @@
 package com.zun;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
-        Developer developer1 = new Developer(100, "Jason Fedin", "Pro Dev");
-        Developer developer2 = new Developer(101, "Myra Fedin", "Jr Dev");
+        Supervisor technologyDean = new Supervisor("Dr. Mike", "Dean of Technology");
+        Supervisor chairOfMathDepartment = new Supervisor("Dr. John", "Chair of Math Department");
+        Supervisor chairOfComputerScienceDepartment = new Supervisor("Dr. Ian", "Chair Of CS Department");
 
-        Manager engDirectory = new Manager("Mike", 25000);
-        engDirectory.addEmployee(developer1);
-        engDirectory.addEmployee(developer2);
+        Professor mathProf1 = new Professor("Math Professor1", "Adjunct", 302);
+        Professor mathProf2 = new Professor("Math Professor2", "Associate", 303);
 
-        Developer developer3 = new Developer(103, "Tom", "Dev");
+        Professor cseProf1 = new Professor ("CSE Professor1", "Adjunct", 507);
+        Professor cseProf2 = new Professor ("CSE Professor2", "Professor", 508);
+        Professor cseProf3 = new Professor ("CSE Professor3", "Professor", 509);
 
-        Manager genManager = new Manager("Mark", 50000);
+        technologyDean.add(chairOfMathDepartment );
+        technologyDean.add(chairOfComputerScienceDepartment );
 
-        genManager.addEmployee(developer3);
-        genManager.addEmployee(engDirectory);
+        /* Professors of Mathematics directly reports to chair of math*/
+        chairOfMathDepartment.add(mathProf1);
+        chairOfMathDepartment.add(mathProf2);
 
-        genManager.showEmployeeDetails();
+        /*Professors of  Computer Sc. directly reports to chair of computer science*/
+        chairOfComputerScienceDepartment.add(cseProf1);
+        chairOfComputerScienceDepartment.add(cseProf2);
+        chairOfComputerScienceDepartment.add(cseProf3);
+
+        //Printing the details
+        System.out.println("***COMPOSITE PATTERN DEMO ***");
+        System.out.println("\nThe college has the following structure\n");
+
+        System.out.println(technologyDean.getDetails());
+        List<Faculty> chairs=technologyDean.getFacultyList();
+        chairs.forEach(i -> System.out.println("\t\t"+ i.getDetails()));
+
+        List<Faculty> mathProfessors= chairOfMathDepartment.getFacultyList();
+        mathProfessors.forEach(i -> System.out.println("\t\t"+ i.getDetails()));
+
+        List<Faculty> cseProfessors= chairOfComputerScienceDepartment.getFacultyList();
+        cseProfessors.forEach(i -> System.out.println("\t\t"+ i.getDetails()));
+
+        chairOfComputerScienceDepartment.remove(cseProf2);
+
+        System.out.println("\n After CSE Professor2 leaving the organization- CSE department has following faculty:");
+
+        cseProfessors = chairOfComputerScienceDepartment.getFacultyList();
+        cseProfessors.forEach(i -> System.out.println("\t\t"+ i.getDetails()));
     }
 }
