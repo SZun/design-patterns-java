@@ -1,19 +1,30 @@
 package com.zun;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
-    private static final ItemElement[] items = new ItemElement[]{
-            new Book(20, "1234"),new Book(100, "5678"),
-            new Fruit(10, 2, "Banana"), new Fruit(5, 5, "Apple")
-    };
+    private static List<Visitable> items = Arrays.asList(
+            new Book(8.52, 1.05),
+            new CD(18.52, 3.05),
+            new DVD(6.53, 4.02)
+    );
 
     public static void main(String[] args) {
-        System.out.println("Total Cost = "+ calculatePrice(items));
+
+        Visitor visitor = new USPostageVisitor();
+        System.out.println("Total US Postage: " + calcPostage(visitor));
+        visitor = new SouthAmericanPostageVisitor();
+        System.out.println("Total SA Postage: " + calcPostage(visitor));
+
+
     }
 
-    private static int calculatePrice(ItemElement[] items) {
-        return Arrays.stream(items).mapToInt(i -> i.accept(new ShoppingCartVisitorImpl())).sum();
+    private static double calcPostage(Visitor visitor){
+        items.forEach(i -> i.accept(visitor));
+        return visitor.getTotalPostageForCart();
     }
+
 }
