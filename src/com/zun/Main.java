@@ -3,14 +3,12 @@ package com.zun;
 public class Main {
 
     public static void main(String[] args) {
-	    HouseTemplate house = new WoodenHouse();
+	    OrderProcessTemplate order = new NetOrder();
+	    order.processOrder(true);
 
-	    house.buildHouse();
+        System.out.println("*** *** *** *** *** *** *** *** ");
 
-        System.out.println("*** *** *** *** *** ***");
-
-        house = new GlassHouse();
-
-        house.buildHouse();
+        order = new StoreOrder();
+        order.processOrder(true);
     }
 }
