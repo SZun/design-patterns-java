@@ -5,47 +5,35 @@ import java.util.List;
 
 interface Subject {
 
-    void register(Observer obj);
-    void unregister(Observer obj);
+    void registerObserver(Observer obj);
+    void unregisterObserver(Observer obj);
     void notifyObserver();
-    Object getUpdate(Observer obj);
 
 }
 
-class MyTopic implements Subject {
+class CricketData implements Subject {
 
-    private final List<Observer> observers = new ArrayList<>();
-    private String message;
-    private boolean changed;
+    private final int runs = 90, wickets = 10;
+    private float overs = 10.2f;
+    List<Observer> observerList = new ArrayList<>();
 
     @Override
-    public void register(Observer obj) {
-        if(!observers.contains(obj)) observers.add(obj);
+    public void registerObserver(Observer obj) {
+        observerList.add(obj);
     }
 
     @Override
-    public void unregister(Observer obj) {
-        observers.remove(obj);
+    public void unregisterObserver(Observer obj) {
+        observerList.remove(obj);
     }
 
     @Override
     public void notifyObserver() {
-        if(!changed) return;
-
-        List<Observer> observers = new ArrayList<>(this.observers);
-        this.changed = false;
-        observers.forEach(Observer::update);
+        observerList.forEach(i -> i.update(runs,wickets,overs));
     }
 
-    @Override
-    public Object getUpdate(Observer obj) {
-        return this.message;
-    }
-
-    public void postMessage(String msg){
-        System.out.println("Message posted to topic: " + msg);
-        message = msg;
-        changed = true;
+    public void dataChanged(){
         notifyObserver();
     }
+
 }

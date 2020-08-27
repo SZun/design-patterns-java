@@ -2,30 +2,51 @@ package com.zun;
 
 public interface Observer {
 
-    void update();
-
-    void setSubject(Subject sub);
+    void update(int runs, int wickets, float overs);
 
 }
 
-class MyTopicSubscriber implements Observer {
+class AverageScoreDisplay implements Observer {
 
-    private final String name;
-    private Subject topic;
-
-    public MyTopicSubscriber(String name) {
-        this.name = name;
-    }
+    private float runRate;
+    private int predictScore;
 
     @Override
-    public void update() {
-        String msg = (String) topic.getUpdate(this);
-        String res = msg == null ? name + ":: No new message" : name + ":: Consuming message " + msg;
-        System.out.println(res);
+    public void update(int runs, int wickets, float overs) {
+        runRate = runs/overs;
+        predictScore = (int) runRate * 50;
+        display();
     }
 
+    public void display(){
+        System.out.println(
+                "\n Average Score Display\n" +
+                "Run Rate: " + runRate +
+                "\n Predicted Score: " + predictScore
+        );
+    }
+}
+
+class CurrentScoreDisplay implements Observer {
+
+    private int runs, wickets;
+    private float overs;
+
     @Override
-    public void setSubject(Subject sub) {
-        topic = sub;
+    public void update(int runs, int wickets, float overs) {
+        this.runs = runs;
+        this.wickets = wickets;
+        this.overs = overs;
+
+        display();
+    }
+
+    public void display(){
+        System.out.println(
+                "\nCurrent Score Display:\n" +
+                "Runs: " + runs +
+                "\nWickets: " + wickets +
+                "\nOvers: " + overs
+        );
     }
 }

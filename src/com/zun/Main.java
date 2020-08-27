@@ -6,18 +6,17 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        MyTopic topic = new MyTopic();
+        AverageScoreDisplay averageScoreDisplay = new AverageScoreDisplay();
+        CurrentScoreDisplay currentScoreDisplay = new CurrentScoreDisplay();
 
-        Observer obj1 = new MyTopicSubscriber("Obj1");
-        Observer obj2 = new MyTopicSubscriber("Obj2");
-        Observer obj3 = new MyTopicSubscriber("Obj3");
+        CricketData cricketData = new CricketData();
 
-        List<Observer> observers = Arrays.asList(obj1, obj2, obj3);
-        observers.forEach(topic::register);
-        observers.forEach(i -> i.setSubject(topic));
+        Arrays.asList(averageScoreDisplay, currentScoreDisplay).forEach(cricketData::registerObserver);
 
-        obj1.update();
+        cricketData.dataChanged();
 
-        topic.postMessage("New MSG");
+        cricketData.unregisterObserver(averageScoreDisplay);
+
+        cricketData.dataChanged();
     }
 }
