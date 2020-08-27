@@ -2,33 +2,32 @@ package com.zun;
 
 public class Main {
 
-    private static InterpreterContext ic;
-
-    private Main(InterpreterContext i){
-        ic = i;
-    }
-
     public static void main(String[] args) {
-        String str1 = "28 in Binary";
-        String str2 = "28 in Hexadecimal";
+        Expression male = getMaleExpression();
+        Expression marriedWoman = getMarriedWomanExpression();
 
-        Main ec = new Main(new InterpreterContext());
-        System.out.println(str1+"= "+ec.interpret(str1));
-        System.out.println(str2+"= "+ec.interpret(str2));
+        Context ic = new Context("John");
+        System.out.println("Is John male ?: " + male.interpret(ic));
+
+        ic = new Context("Married Julie");
+        System.out.println("Julie is a married woman?: " + marriedWoman.interpret(ic));
+
+        ic = new Context("Lucy");
+        System.out.println("Is Lucy male ?: " + male.interpret(ic));
     }
 
+    private static Expression getMaleExpression(){
+        Expression robert = new TerminalExpression("Robert");
+        Expression john = new TerminalExpression("John");
 
-    private static String interpret(String str) {
-        Expression exp = null;
-
-        // perform the parsing
-        if(str.contains("Hexadecimal")){
-            exp=new IntToHexExpression(Integer.parseInt(str.substring(0,str.indexOf(" "))));
-        }else if(str.contains("Binary")) {
-            exp=new IntToBinaryExpression(Integer.parseInt(str.substring(0,str.indexOf(" "))));
-        }else
-            return str;
-
-        return exp.interpret(ic);
+        return new OrExpression(robert,john);
     }
+
+    private static Expression getMarriedWomanExpression(){
+        Expression julie = new TerminalExpression("Julie");
+        Expression married = new TerminalExpression("Married");
+
+        return new OrExpression(julie,married);
+    }
+
 }

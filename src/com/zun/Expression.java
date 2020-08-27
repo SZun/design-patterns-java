@@ -2,34 +2,20 @@ package com.zun;
 
 public interface Expression {
 
-    String interpret(InterpreterContext ic);
+    boolean interpret(Context ctx);
 
 }
 
-class IntToBinaryExpression implements Expression {
+class TerminalExpression implements Expression {
 
-    private int i;
+    private final String data;
 
-    public IntToBinaryExpression(int i) {
-        this.i = i;
+    public TerminalExpression(String data) {
+        this.data = data;
     }
 
     @Override
-    public String interpret(InterpreterContext ic) {
-        return ic.getBinary(i);
-    }
-}
-
-class IntToHexExpression implements Expression {
-
-    private int i;
-
-    public IntToHexExpression(int i) {
-        this.i = i;
-    }
-
-    @Override
-    public String interpret(InterpreterContext ic) {
-        return ic.getHexadecimal(i);
+    public boolean interpret(Context ctx) {
+        return ctx.getRes(data);
     }
 }
